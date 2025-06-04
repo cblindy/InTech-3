@@ -1,0 +1,228 @@
+/* Базовые стили для страницы */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+}
+
+    .header h1 {
+        margin: 0;
+        font-size: 36px;
+    }
+
+.main {
+    padding: 20px 0;
+}
+
+.page_container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefits {
+    padding: 20px 0;
+}
+
+/* Основной контейнер слайдера */
+#immersive_slider {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    background: #161923;
+    overflow: hidden;
+}
+
+/* Контейнер для слайдов */
+.is-overflow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Стили для слайдов */
+#immersive_slider .is-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 100px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    z-index: 1;
+}
+
+    /* Активный слайд */
+    #immersive_slider .is-slide.active {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        z-index: 10;
+    }
+
+    /* Анимация появления */
+    #immersive_slider .is-slide.from-left {
+        transform: translateX(-100%);
+    }
+
+    #immersive_slider .is-slide.from-right {
+        transform: translateX(100%);
+    }
+
+    /* Анимация ухода */
+    #immersive_slider .is-slide.exiting-to-right {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    #immersive_slider .is-slide.exiting-to-left {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    /* Контент внутри слайда */
+    #immersive_slider .is-slide .content {
+        width: 50%;
+        padding-right: 20px;
+        box-sizing: border-box;
+        color: white;
+        text-align: left;
+        line-height: 160%;
+        overflow-y: auto;
+        max-height: 100%;
+    }
+
+        #immersive_slider .is-slide .content h2 {
+            font-size: 42px;
+            font-weight: 300;
+            text-align: left;
+            margin: 0 0 10px 0;
+        }
+
+        #immersive_slider .is-slide .content p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+    #immersive_slider .is-slide .image {
+        width: 50%;
+        padding-left: 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 100%;
+        /* Убираем overflow: hidden, чтобы изображение не обрезалось */
+    }
+
+        #immersive_slider .is-slide .image img {
+            max-width: 100%;
+            max-height: 100%;
+            /* Заменяем object-fit: contain на object-fit: scale-down, чтобы изображение масштабировалось, но не обрезалось */
+            object-fit: scale-down;
+            /* Убираем "приближение" к центру, добавляя object-position: center */
+            object-position: center;
+        }
+
+/* Контейнер для фонов */
+.is-bg-overflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Стили для фонов */
+.is-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+    /* Активный фон */
+    .is-background.active {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+
+    /* Анимация появления фона */
+    .is-background.from-left {
+        transform: translateX(-100%);
+    }
+
+    .is-background.from-right {
+        transform: translateX(100%);
+    }
+
+    /* Анимация ухода фона */
+    .is-background.exiting-to-right {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    .is-background.exiting-to-left {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    .is-background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* Эффект размытия для фона */
+.is-background {
+    -webkit-filter: blur(20px);
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    filter: blur(20px);
+}
+
+/* Кнопки навигации */
+.is-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.is-prev,
+.is-next {
+    position: absolute;
+    font-size: 50px;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 5px 10px;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.is-prev {
+    left: 10px;
+}
+
+.is-next {
+    right: 10px;
+}
